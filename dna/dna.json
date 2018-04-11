@@ -1,0 +1,95 @@
+{
+    "Version": 1,
+    "UUID": "a74943f9-3d61-11e8-a5bc-685b35836414",
+    "Name": "KeywordSearchTable",
+    "Properties": {
+        "description": "A small demo dApp showing how records can be added to the DHT and retrieved by keywords",
+        "language": "en"
+    },
+    "PropertiesSchemaFile": "properties_schema.json",
+    "BasedOn": {
+        "H": null
+    },
+    "RequiresVersion": 23,
+    "DHTConfig": {
+        "HashType": "sha2-256",
+        "NeighborhoodSize": 0
+    },
+    "Progenitor": {
+        "Identity": "",
+        "PubKey": null
+    },
+    "Zomes": [
+        {
+            "Name": "record",
+            "Description": "Deals with adding and searching records in the DHT",
+            "CodeFile": "record.js",
+            "RibosomeType": "js",
+            "BridgeFuncs": null,
+            "Config": null,
+            "Entries": [
+                {
+                    "Name": "record",
+                    "DataFormat": "json",
+                    "SchemaFile": "recordSchema.json",
+                    "Sharing": "public"
+                },
+                {
+                    "Name": "recordKeywordLinks",
+                    "DataFormat": "links",
+                    "Sharing": "public"
+                }
+            ],
+            "Functions": [
+                {
+                    "Name": "createRecord",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "findRecordsWithKeywords",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                }
+            ]
+        },
+        {
+            "Name": "anchors",
+            "Description": "anchors mixin",
+            "RibosomeType": "js",
+            "CodeFile": "anchors.js",
+            "Config": {
+              "ErrorHandling": "throwErrors"
+            },
+            "Entries": [
+                {
+                    "Name": "anchor",
+                    "DataFormat": "json",
+                    "SchemaFile": "anchor.json",
+                    "Sharing": "public"
+                },
+                {
+                    "Name": "anchor_link",
+                    "DataFormat": "links"
+                }
+            ],
+            "Functions": [
+                {
+                    "Name": "anchor",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "exists",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "anchors",
+                    "CallingType": "string",
+                    "Exposure": "public"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "Tests": [
+        {
+            "Convey": "Add a new record with two keywords",
+            "Zome": "record",
+            "FnName": "createRecord",
+            "Input": {
+                "record" : {"content": "record 1"},
+                "keywords" : ["kw1", "kw2"]
+            },
+            "Output": true,
+            "Err": null,
+            "ErrMsg": ""
+        },
+        {
+            "Convey": "Add another new record with two keywords",
+            "Zome": "record",
+            "FnName": "createRecord",
+            "Input": {
+                "record" : {"content": "record 2"},
+                "keywords" : ["kw2", "kw3"]
+            },
+            "Output": true,
+            "Err": null,
+            "ErrMsg": ""
+        },
+        {
+            "Convey": "Try retrieving records using keywords",
+            "Zome": "record",
+            "FnName": "findRecordsWithKeywords",
+            "Input": {
+                "keywords" : ["kw2"]
+            },
+            "Output": [{"content": "record 1"}, {"content": "record 2"}],
+            "Err": null,
+            "ErrMsg": ""
+        }
+    ],
+    "Identity": "",
+    "Fixtures": {
+        "Agents": null
+    },
+    "Benchmark": false
+}
